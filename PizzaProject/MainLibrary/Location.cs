@@ -9,7 +9,7 @@ namespace MainLibrary
         //fields 
 
         int ingredientCount;
-       public string address { get; set; }
+        public string address { get; set; } = "Store 1";
   
 
         //constructor below. requires address or store name. 
@@ -17,6 +17,11 @@ namespace MainLibrary
         {
             ingredientCount = 3;
             this.address = address;
+        }
+
+        public Location()
+        {
+
         }
 
      

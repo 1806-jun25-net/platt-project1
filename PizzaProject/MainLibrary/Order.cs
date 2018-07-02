@@ -4,12 +4,46 @@ using System.Text;
 
 namespace MainLibrary
 {
-    class Order
+    public class Order
     {
-        string location;
-        string user;
+
+        Location location;
+        User user;
         DateTime orderTime;
+        public List<Pizza> PizzaList; 
         int pizzaCount; //max 12
-        int totalValue; //max 500 dollars
+        decimal totalValue; //max 500 dollars
+
+
+        public Order(int numPizzas)
+        {
+            int pizzaCount = numPizzas;
+            PizzaList = new List<Pizza>();
+
+
+
+            for (int i = 1; i <= numPizzas; i++)
+
+            {
+                Console.WriteLine("Pizza" + i);
+                Console.WriteLine("Do you want pepperoni? y/n");
+
+                string hasPep = Console.ReadLine();
+
+                Console.WriteLine("Great. Now do you want onions? y/n");
+
+                string hasOnions = Console.ReadLine();
+
+                Pizza Pizza = new Pizza();
+
+
+                PizzaList.Add(Pizza);
+
+            }
+        }
+
+       
+
+        
     }
 }
