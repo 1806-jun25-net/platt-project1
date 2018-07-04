@@ -27,14 +27,16 @@ namespace MainLibrary
 
     public class Pizza
     {
-        
 
-        public List<String> ListofToppings = new List<String>();
-        decimal pizzaCost = 0;
+
+        public List<String> ListofToppings = new List<String>(new string[] { "Sauce", "Dough", "Cheese" });
+
+
         string pizzaSize = "medium";
 
-   
+        decimal pizzaCost = 0;
 
+       
         public void addToppings(List<String> toppingList)
         {
 
@@ -69,6 +71,14 @@ namespace MainLibrary
                     pizzaCost += 0.50m;
 
                 }
+                else if (topping == "Pineapple")
+                {
+                    pizzaCost += 0.50m;
+                }
+                else if (topping == "Veggies")
+                {
+                    pizzaCost += 0.50m;
+                }
 
                
             }
@@ -76,13 +86,13 @@ namespace MainLibrary
 
             if (pizzaSize == "large")
             {
-                pizzaCost += 8.00m;
+                pizzaCost += 10.00m;
 
             }
 
             else if (pizzaSize == "medium")
             {
-                pizzaCost += 6.00m;
+                pizzaCost += 8.00m;
             }
 
             else if (pizzaSize == "small")
