@@ -13,35 +13,41 @@ namespace MainLibrary
         public List<Pizza> PizzaList; 
         int pizzaCount; //max 12
         decimal totalValue; //max 500 dollars
+        public DateTime TimeOfOrder { get; set; } = new DateTime();
 
-
-        public Order(int numPizzas)
+       
+        public Order()
         {
-            int pizzaCount = numPizzas;
-            PizzaList = new List<Pizza>();
+            Pizza Pizza1 = new Pizza();
+            Pizza Pizza2 = new Pizza();
+            Pizza Pizza3 = new Pizza();
 
+            PizzaList = new List<Pizza> { Pizza1, Pizza2, Pizza3};
 
-
-            for (int i = 1; i <= numPizzas; i++)
-
-            {
-                Console.WriteLine("Pizza" + i);
-                Console.WriteLine("Do you want pepperoni? y/n");
-
-                string hasPep = Console.ReadLine();
-
-                Console.WriteLine("Great. Now do you want onions? y/n");
-
-                string hasOnions = Console.ReadLine();
-
-                Pizza Pizza = new Pizza();
-
-
-                PizzaList.Add(Pizza);
-
-            }
         }
 
+        public Order(List<Pizza> pizzasInOrder)
+        {
+
+            PizzaList = pizzasInOrder;
+            TimeOfOrder = DateTime.Now;
+
+
+        }
+
+        public decimal calculateOrderPrice()
+        {
+            decimal runningTotal = 0m;
+
+            foreach (Pizza pizza in PizzaList)
+                runningTotal += pizza.calculatePizzaPrice();
+
+
+            return runningTotal;
+        }
+
+
+        
        
 
         

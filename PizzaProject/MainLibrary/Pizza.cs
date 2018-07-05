@@ -36,7 +36,13 @@ namespace MainLibrary
 
         decimal pizzaCost = 0;
 
-       
+       public Pizza()
+        {
+
+
+        }
+
+
         public void addToppings(List<String> toppingList)
         {
 

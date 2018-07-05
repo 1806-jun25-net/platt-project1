@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MainLibrary
 {
@@ -8,13 +9,20 @@ namespace MainLibrary
         public string lastName { get; set; } = "Ross";
         Location defaultLocation = new Location();
         public string RecentOrderLocation { get; set; } = "Main Store";
+        public List<Order> UserOrderHistory = new List<Order>();
+
+
+      
+       public DateTime timeOfOrder { get; set; } = new DateTime();
 
 
 
-       public DateTime timeOfOrder = new DateTime();
+        public void placeOrder(Location location, List<Pizza> pizzas)
+
+        {
 
 
-
+        }
         
     }
 }

@@ -10,11 +10,11 @@ namespace MainLibrary
     {
         //fields
 
-
+        public List<Order> LocOrderHistory = new List<Order>();
         //the string will be the toppings ex "sausage" and the int will be the amount of that topping left. 
         // assuming 1 per order. 
 
-        Dictionary<string, int> Inventory = new Dictionary<string, int>
+       public Dictionary<string, int> Inventory = new Dictionary<string, int>
         {
             //consider the numbers as units. ex 5 units of pep in inventory. 1 unit per order. 
             {"Pepporoni", 10 },
@@ -42,9 +42,27 @@ namespace MainLibrary
        
     
 
-        public void removeFromInventory(string thingtoRemove, int howMany)
+        public void removeFromInventory(Order order)
         {
-           
+
+
+           foreach (Pizza pizza in order.PizzaList)
+            {
+                foreach (string ingredient in pizza.ListofToppings)
+                {
+                    if (Inventory.ContainsKey(ingredient))
+                    {
+                        Inventory[ingredient] = Inventory[ingredient] - 1;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Ingredient");
+                    }
+
+                }
+
+            }
 
         }
 

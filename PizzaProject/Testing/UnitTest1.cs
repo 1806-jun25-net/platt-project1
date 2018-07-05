@@ -1,13 +1,22 @@
 using System;
 using Xunit;
+using MainLibrary;
 
 namespace Testing
 {
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void locationRemoveFromInventoryShouldWork()
         {
+
+            Order orderTest = new Order();
+
+            Location locationTest = new Location();
+
+            locationTest.removeFromInventory(orderTest);
+
+            Assert.True(locationTest.Inventory["Dough"] == 6);
 
         }
     }
