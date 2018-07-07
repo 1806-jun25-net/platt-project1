@@ -5,24 +5,28 @@ namespace MainLibrary
 {
     public class User
     {
-        public string firstName { get; set; } = "Bob";
-        public string lastName { get; set; } = "Ross";
-        Location defaultLocation = new Location();
-        public string RecentOrderLocation { get; set; } = "Main Store";
-        public List<Order> UserOrderHistory = new List<Order>();
+        public string FirstName { get; set; } = "Bob";
+        public string LastName { get; set; } = "Ross";
+        public int DefaultStoreNum { get; set; } = 1;
+        public int RecentOrderLocation { get; set; } = 1;
+        //public List<Order> UserOrderHistory = new List<Order>();
 
 
       
-       public DateTime timeOfOrder { get; set; } = new DateTime();
+       public DateTime TimeOfOrder { get; set; } = new DateTime();
 
 
 
-        public void placeOrder(Location location, List<Pizza> pizzas)
+    /*    public User (string first, string last, int defstorenum)
 
         {
+            FirstName = first;
+            LastName = last;
+            DefaultStoreNum = defstorenum;
 
 
-        }
+        }*/
+     
         
     }
 }

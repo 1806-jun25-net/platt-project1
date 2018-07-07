@@ -6,19 +6,19 @@ using System.Xml.Serialization;
 
 namespace MainLibrary
 {
-    class Serializer
+    public class Serializer
     {
   
 
-        private static void SerializeToFile(string fileName, List<Pizza> people)
+        public static void SerializeToFile(string fileName, List<Order> listoforders)
         {
-            var serializer = new XmlSerializer(typeof(List<Pizza>));
+            var serializer = new XmlSerializer(typeof(List<Order>));
             FileStream fileStream = null;
 
             try
             {
                 fileStream = new FileStream(fileName, FileMode.Create);
-                serializer.Serialize(fileStream, people);
+                serializer.Serialize(fileStream, listoforders);
             }
             catch (PathTooLongException ex)
             {
@@ -31,7 +31,7 @@ namespace MainLibrary
             catch (Exception ex)
             {
                 Console.WriteLine($"Unexpected error: {ex.Message}");
-                throw; // re-throws the same exception
+               throw; // re-throws the same exception
             }
             finally
             {
@@ -42,34 +42,34 @@ namespace MainLibrary
             }
         }
 
-        private static List<Pizza> DeserializeFromFileAsync(string fileName)
+        public static List<Order> DeserializeFromFile(string fileName)
         {
-            var serializer = new XmlSerializer(typeof(List<Pizza>));
+            var serializer = new XmlSerializer(typeof(List<Order>));
 
 
-            // we CAN do try/finally like this, but the using statement is easier
-            //FileStream fileStream = null;
-            //try
-            //{
-            //    fileStream = new FileStream(fileName, FileMode.Open);
-
-            //    var result = (List<Person>)serializer.Deserialize(fileStream);
-            //    return result;
-            //}
-            //finally
-            //{
-            //    fileStream.Dispose();
-            //}
-
-            using (var memoryStream = new MemoryStream())
-            {
-                using (var fileStream = new FileStream(fileName, FileMode.Open))
+            //we CAN do try/finally like this, but the using statement is easier
+           FileStream fileStream = null;
+                try
                 {
-                    fileStream.CopyToAsync(memoryStream);
+                    fileStream = new FileStream(fileName, FileMode.Open);
+
+                    var result = (List<Order>)serializer.Deserialize(fileStream);
+                    return result;
                 }
-                memoryStream.Position = 0; // reset "cursor" of stream to beginning
-                return (List<Pizza>)serializer.Deserialize(memoryStream);
-            }
-        }
+                finally
+                {
+                    fileStream.Dispose();
+                }
+
+                //using (var memoryStream = new MemoryStream())
+                //{
+                //    using (var fileStream = new FileStream(fileName, FileMode.Open))
+                //    {
+                //        fileStream.CopyToAsync(memoryStream);
+                //    }
+                //    memoryStream.Position = 0; // reset "cursor" of stream to beginning
+                //    return (List<Order>)serializer.Deserialize(memoryStream);
+                //}
+                }
     }
 }

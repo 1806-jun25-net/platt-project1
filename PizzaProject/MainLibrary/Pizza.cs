@@ -13,7 +13,7 @@
 //    if (hasOnions == "y")
 //        this.hasOnions = true;
 //    else
-//        this.hasOnions = false;
+//        this.hasOnions = false
 //}
 
 using System;
@@ -28,87 +28,115 @@ namespace MainLibrary
     public class Pizza
     {
 
+        //dough and sauce is on by default
+        //has pep, has pinapple
+        public List<Boolean> ListofToppings = new List<Boolean>(new Boolean[] {false,false }); //default toppings
 
-        public List<String> ListofToppings = new List<String>(new string[] { "Sauce", "Dough", "Cheese" });
-
-
-        string pizzaSize = "medium";
+       
+        //1 for small, 2 for medium, 3 for large
+       public int pizzaSize = 2;
 
         decimal pizzaCost = 0;
 
-       public Pizza()
-        {
 
+        public Pizza()
+        {
 
         }
 
-
-        public void addToppings(List<String> toppingList)
+       public Pizza(int size, List<Boolean> toppingList)
         {
+            if (size == 1)
+                pizzaCost += 5.00m;
+            else if (size == 2)
+                pizzaCost += 7.00m;
+            else if (size == 3)
+                pizzaCost += 9.00m;
 
-            foreach (String topping in toppingList)
-                ListofToppings.Add(topping);
-
-
-        }
-
-        public void setPizzaSize (String size)
-        {
-            pizzaSize = size;
-
-        }
-
-        public decimal calculatePizzaPrice()
-        {
-
-
-            // instead of all the if elses here. could use a data structure (2d array or dictionary) to
-            //associate a topping or size for example with its price. Then run through a for each and just add
-            // the price section to the running total. 
-            foreach (string topping in ListofToppings)
+            foreach (Boolean topping in toppingList)
             {
-                if (topping == "Pepporoni")
-                {
-                    pizzaCost += 0.50m;
 
-                }
-                else if (topping == "Sausage")
-                {
-                    pizzaCost += 0.50m;
+                if(topping == true)
+                pizzaCost += 0.50m;  //each topping cost an extra 50 cents
+            }
+                
 
-                }
-                else if (topping == "Pineapple")
-                {
-                    pizzaCost += 0.50m;
-                }
-                else if (topping == "Veggies")
-                {
-                    pizzaCost += 0.50m;
-                }
+
+        }
+
+        public decimal GetPizzaCost()
+        {
+            return this.pizzaCost;
+
+        }
+
+
+        //public void AddToppings(List<String> toppingList)
+        //{
+
+        //    foreach (Boolean topping in toppingList)
+        //        ListofToppings.Add(topping);
+
+
+        //}
+
+        //public void SetPizzaSize (int size)
+        //{
+        //    pizzaSize = size;
+
+        //}
+
+        //public decimal CalculatePizzaPrice()
+        //{
+
+
+        //    // instead of all the if elses here. could use a data structure (2d array or dictionary) to
+        //    //associate a topping or size for example with its price. Then run through a for each and just add
+        //    // the price section to the running total. 
+        //    foreach (string topping in ListofToppings)
+        //    {
+        //        if (topping == "Pepporoni")
+        //        {
+        //            pizzaCost += 0.50m;
+
+        //        }
+        //        //else if (topping == "Sausage")
+        //        //{
+        //        //    pizzaCost += 0.50m;
+
+        //        //}
+        //        //else if (topping == "Pineapple")
+        //        //{
+        //        //    pizzaCost += 0.50m;
+        //        //}
+        //        //else if (topping == "Veggies")
+        //        //{
+        //        //    pizzaCost += 0.50m;
+        //        //}
 
                
-            }
+        //    }
 
 
-            if (pizzaSize == "large")
-            {
-                pizzaCost += 10.00m;
+        //    if (pizzaSize == "large")
+        //    {
+        //        pizzaCost += 10.00m;
 
-            }
+        //    }
 
-            else if (pizzaSize == "medium")
-            {
-                pizzaCost += 8.00m;
-            }
+        //    else if (pizzaSize == "medium")
+        //    {
+        //        pizzaCost += 8.00m;
+        //    }
 
-            else if (pizzaSize == "small")
-            {
-                pizzaCost += 5.00m;
-            }
+        //    else if (pizzaSize == "small")
+        //    {
+        //        pizzaCost += 5.00m;
+        //    }
 
-            return pizzaCost;
+        //    return pizzaCost;
 
-        }
+        //}
 
 
     }

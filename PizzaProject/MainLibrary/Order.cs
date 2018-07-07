@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace MainLibrary
 {
+    
     public class Order
     {
-
-        Location location;
-        User user;
-        DateTime orderTime;
+        [XmlElement]
+        public Location Location { get; set; }
+        public User User;
+       
         public List<Pizza> PizzaList; 
-        int pizzaCount; //max 12
-        decimal totalValue; //max 500 dollars
+        public int pizzaCount; //max 12
+        public decimal totalValue; //max 500 dollars
         public DateTime TimeOfOrder { get; set; } = new DateTime();
 
        
@@ -26,11 +28,26 @@ namespace MainLibrary
 
         }
 
-        public Order(List<Pizza> pizzasInOrder)
+        public Order(int numPizzasinOrder)
         {
+            this.pizzaCount = numPizzasinOrder;
 
+        }
+
+        //public void BuildOrderHelper()
+        //{
+
+
+        //}
+
+        public void makeOrder(List<Pizza> pizzasInOrder, User username, Location storenumber)
+        {
+            User = username;
             PizzaList = pizzasInOrder;
             TimeOfOrder = DateTime.Now;
+            Location = storenumber;
+            pizzaCount = pizzasInOrder.Count;
+            totalValue = 33;
 
 
         }
@@ -40,7 +57,7 @@ namespace MainLibrary
             decimal runningTotal = 0m;
 
             foreach (Pizza pizza in PizzaList)
-                runningTotal += pizza.calculatePizzaPrice();
+                runningTotal += pizza.GetPizzaCost();
 
 
             return runningTotal;
