@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MainLibrary
+namespace MainLibrary.Models
 {
     public class User
     {
@@ -9,7 +9,7 @@ namespace MainLibrary
         public string LastName { get; set; } = "Ross";
         public int DefaultStoreNum { get; set; } = 1;
         public int RecentOrderLocation { get; set; } = 1;
-        //public List<Order> UserOrderHistory = new List<Order>();
+        //public List<Order> UserOrderHistory = new List<Order>(); circular dependency?
 
 
       

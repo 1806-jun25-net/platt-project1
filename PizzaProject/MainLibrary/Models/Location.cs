@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace MainLibrary
+namespace MainLibrary.Models
 {
 
     public class Location
@@ -49,6 +49,14 @@ namespace MainLibrary
         public int StoreNum { get; set; } = 1; // 1 2 or 3 for three stores. 
 
         
+        public void setInventory(Order order)
+        {
+            StoredDough = order.Location.StoredDough;
+            StoredCheese = order.Location.StoredCheese;
+            StoredPep = order.Location.StoredPep;
+            StoredPineapple = order.Location.StoredPineapple;
+
+         }
 
     /**    public Location(int StoreNum)
         {
@@ -156,6 +164,7 @@ namespace MainLibrary
              StoredDough = 10;
              StoredCheese = 10;
              StoredPep = 10;
+            StoredPineapple = 10;
         //    Dictionary<string, int> Inventory = new Dictionary<string, int>
         //{
         //    //consider the numbers as units. ex 5 units of pep in inventory. 1 unit per order. 

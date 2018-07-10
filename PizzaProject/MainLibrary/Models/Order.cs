@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace MainLibrary
+namespace MainLibrary.Models
 {
     
     public class Order
@@ -47,12 +47,24 @@ namespace MainLibrary
             TimeOfOrder = DateTime.Now;
             Location = storenumber;
             pizzaCount = pizzasInOrder.Count;
-            totalValue = 33;
+
+            totalValue = validateOrderCost();
 
 
         }
 
-        public decimal calculateOrderPrice()
+        //public decimal calculateOrderPrice()
+        //{
+        //    decimal runningTotal = 0m;
+
+        //    foreach (Pizza pizza in PizzaList)
+        //        runningTotal += pizza.GetPizzaCost();
+
+
+        //    return runningTotal;
+        //}
+
+        public decimal validateOrderCost()
         {
             decimal runningTotal = 0m;
 
@@ -60,7 +72,36 @@ namespace MainLibrary
                 runningTotal += pizza.GetPizzaCost();
 
 
-            return runningTotal;
+            if (runningTotal >= 500.00m)
+            {
+
+
+                return 0;
+            }
+
+            else
+                return runningTotal;
+
+        }
+
+        public bool validateOrderQuantity()
+        {
+            int numPizzas = 0;
+
+            foreach (Pizza pizza in PizzaList)
+                numPizzas += 1;
+
+
+            if (numPizzas > 12)
+            {
+
+
+                return false;
+            }
+
+            else
+                return true;
+
         }
 
 

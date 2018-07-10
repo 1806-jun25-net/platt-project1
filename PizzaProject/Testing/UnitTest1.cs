@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using MainLibrary;
+using MainLibrary.Models;
 
 namespace Testing
 {

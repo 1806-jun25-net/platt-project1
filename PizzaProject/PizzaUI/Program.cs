@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using MainLibrary;
+using MainLibrary.Models;
 using System.Xml.Serialization;
+using System.Linq;
+using PS = DBContext.Models;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace PizzaUI
 {
@@ -10,14 +15,62 @@ namespace PizzaUI
         static void Main(string[] args)
         {
 
+
+            var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            IConfigurationRoot configuration = configBuilder.Build();
+            var optionsBuilder = new DbContextOptionsBuilder<PS.PizzaStoreContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PizzaStore"));
+            var options = optionsBuilder.Options;
+
+            var dbContext = new PS.PizzaStoreContext(options);
+
             Location Store1 = new Location { StoreNum = 1 };
             Location Store2 = new Location { StoreNum = 2 };
             Location Store3 = new Location { StoreNum = 3 };
 
             List<Order> allOrders = new List<Order>();
 
-            //allOrders = Serializer.DeserializeFromFile("orders");
+           allOrders = Serializer.DeserializeFromFile("orderlist.xml");
 
+            foreach(Order order in allOrders.Reverse<Order>())
+            {
+                if (order.Location.StoreNum == 1)
+                {
+                    Store1 = order.Location;
+                    break;
+                }
+
+            }
+
+            foreach (Order order in allOrders.Reverse<Order>())
+            {
+                if (order.Location.StoreNum == 2)
+                {
+                    Store2 = order.Location;
+                    break;
+                }
+
+            }
+
+
+            foreach (Order order in allOrders.Reverse<Order>())
+            {
+                if (order.Location.StoreNum == 3)
+                {
+                    Store3 = order.Location;
+                    break;
+                }
+
+            }
+
+            //foreach (Order order in allOrders)
+            //{
+            //    //User UserTestUser = allOrders[i].User;
+            //    //User NextUser = allOrders.Distinct<>
+
+            //}
 
             Console.WriteLine("Please sign in:" +
                 "First Name:");
@@ -64,7 +117,14 @@ namespace PizzaUI
                     "8. Load Data from disk \n" +
                     "9. Quit");
 
-                optionSelect = Convert.ToInt32(Console.ReadLine());
+                while (true)
+                {
+                    optionSelect = Convert.ToInt32(Console.ReadLine());
+                    if (optionSelect >= 1 && optionSelect < 10)
+                        break;
+                    else
+                        continue;
+                }
 
 
 
@@ -102,9 +162,18 @@ namespace PizzaUI
                 else if (optionSelect == 2)
                 {
 
-                    Console.WriteLine("How many pizzas do you want? (1-12)");
+                    int numberPizzasinOrder = 0;
 
-                    int numberPizzasinOrder = Convert.ToInt32(Console.ReadLine());
+                    while (true)
+                    {
+                        Console.WriteLine("How many pizzas do you want? (1-12)");
+                        numberPizzasinOrder = Convert.ToInt32(Console.ReadLine());
+
+                        if (numberPizzasinOrder > 0 && numberPizzasinOrder <= 12)
+                            break;
+                        else
+                            continue;
+                    }
 
                     List<Pizza> PizzaList = new List<Pizza>();
 
@@ -112,7 +181,7 @@ namespace PizzaUI
                     {
                         int Size;
 
-                        Console.WriteLine("Current Pizza Number is: i");
+                        Console.WriteLine("Current Pizza Number is: " + i);
 
                         while (true)
                         {
@@ -139,13 +208,19 @@ namespace PizzaUI
                         
 
                         
-                        Store1.RemoveFromInventory(Order);
-                        User.RecentOrderLocation = 1;
-                        //User.UserOrderHistory.Add(Order);
-                       // Store1.LocOrderHistory.Add(Order);
-                        allOrders.Add(Order);
+                       bool success = Store1.RemoveFromInventory(Order);
 
-                        Serializer.SerializeToFile("orderlist.xml", allOrders);
+                        if (success)
+                        {
+                            User.RecentOrderLocation = 1;
+                            //User.UserOrderHistory.Add(Order);
+                            // Store1.LocOrderHistory.Add(Order);
+                            allOrders.Add(Order);
+
+                            Serializer.SerializeToFile("orderlist.xml", allOrders);
+                        }
+                        else
+                            Console.WriteLine("Not enough inventory left");
 
 
                     }
@@ -153,27 +228,83 @@ namespace PizzaUI
                     {
                         Order Order = new Order();
                         Order.makeOrder(PizzaList, User, Store2);
-                        Store2.RemoveFromInventory(Order);
-                        User.RecentOrderLocation = 2;
-                       // User.UserOrderHistory.Add(Order);
-                      //  Store2.LocOrderHistory.Add(Order);
+                        bool success = Store2.RemoveFromInventory(Order);
+
+                        if (success)
+                        {
+                            User.RecentOrderLocation = 2;
+
+                            allOrders.Add(Order);
+
+                            Serializer.SerializeToFile("orderlist.xml", allOrders);
+                        }
+                        else
+                            Console.WriteLine("Not enough inventory left");
+                        // User.UserOrderHistory.Add(Order);
+                        //  Store2.LocOrderHistory.Add(Order);
                     }
                     else if (User.DefaultStoreNum == 3)
                     {
                         Order Order = new Order();
                         Order.makeOrder(PizzaList, User, Store3);
-                        Store3.RemoveFromInventory(Order);
-                        User.RecentOrderLocation = 3;
-                       // User.UserOrderHistory.Add(Order);
+                        bool success = Store3.RemoveFromInventory(Order);
+
+                        if (success)
+                        {
+                            User.RecentOrderLocation = 3;
+
+                            allOrders.Add(Order);
+
+                            Serializer.SerializeToFile("orderlist.xml", allOrders);
+                        }
+                        else
+                            Console.WriteLine("Not enough inventory left");
+                        // User.UserOrderHistory.Add(Order);
                         //Store3.LocOrderHistory.Add(Order);
                     }
 
-                    Console.WriteLine("testing breakpint");
+                   // Console.WriteLine("testing breakpint");
                 }
 
                 else if (optionSelect == 4)
                 {
 
+
+                }
+                else if (optionSelect == 5)
+                {
+
+                    foreach (Order order in allOrders.Reverse<Order>())
+                    {
+                        if (order.User.FirstName == User.FirstName)
+                        {
+                            List<Pizza> pizzalist = order.PizzaList;
+                            int i = 1;
+                            foreach(Pizza pizza in pizzalist)
+                            {
+                                Console.WriteLine("Pizza number: " + i);
+                                Console.WriteLine("Size is :" + pizza.pizzaSize);
+                                Console.WriteLine("Has Pep?" + pizza.ListofToppings[0]);
+                                Console.WriteLine("Has Pin?" + pizza.ListofToppings[1]);
+                                i++;
+
+
+                            }
+
+                            break;
+
+                        }
+                           
+                        
+
+                    }
+                    //Order suggOrder = suggestedOrder(allOrders, User);
+                    //Console.WriteLine("Your suggested order is ");
+                    //foreach (Pizza pizza in suggOrder.PizzaList)
+                    //{
+                    //    Console.WriteLine(")
+
+                    //}
 
                 }
 
@@ -247,6 +378,31 @@ namespace PizzaUI
 
 
         }
+
+
+        public static Order suggestedOrder(List<Order> allOrders, User user)
+
+        {
+            Order defaultOrder = new Order();
+
+            foreach (Order order in allOrders.Reverse<Order>())
+            {
+
+
+                if (order.User == user)
+                {
+                    return order;
+                }
+
+                
+
+            }
+
+            return defaultOrder;
+        }
+
+
+      
 
            
 
