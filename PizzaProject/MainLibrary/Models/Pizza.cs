@@ -30,11 +30,11 @@ namespace MainLibrary.Models
 
         //dough and sauce is on by default
         //has pep, has pinapple
-        public List<Boolean> ListofToppings = new List<Boolean>(new Boolean[] {false,false }); //default toppings
+        public List<Boolean> ListofToppings; //default toppings = new List<Boolean>(new Boolean[] {false,false }); 
 
-       
+
         //1 for small, 2 for medium, 3 for large
-       public int pizzaSize = 2;
+        public int pizzaSize;
 
         decimal pizzaCost = 0;
 
@@ -44,8 +44,11 @@ namespace MainLibrary.Models
 
         }
 
-       public Pizza(int size, List<Boolean> toppingList)
+       public void setPizza(int size, List<Boolean> toppingList)
         {
+            pizzaSize = size;
+            ListofToppings = toppingList;
+
             if (size == 1)
                 pizzaCost += 5.00m;
             else if (size == 2)

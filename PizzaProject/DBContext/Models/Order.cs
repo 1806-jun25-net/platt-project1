@@ -15,6 +15,7 @@ namespace DBContext.Models
         public int? NumPizzas { get; set; }
         public decimal? Price { get; set; }
         public int? OrderLoc { get; set; }
+        public DateTime? OrderTime { get; set; }
 
         public Location OrderLocNavigation { get; set; }
         public User OrderUserNavigation { get; set; }

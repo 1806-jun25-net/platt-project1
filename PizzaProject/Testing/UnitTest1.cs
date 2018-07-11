@@ -1,23 +1,31 @@
 using System;
 using Xunit;
 using MainLibrary.Models;
+using System.Collections.Generic;
 
 namespace Testing
 {
     public class UnitTest1
     {
         [Fact]
-        public void locationRemoveFromInventoryShouldWork()
+        public void pizzaCostshouldbeaccurate()
         {
+            List<Boolean> ListofToppings = new List<Boolean>(new Boolean[] { true, true }); //passes if true, true 
+            //which represents the presence of pineapple and pepperoni. gross. 
 
-            Order orderTest = new Order();
+            int Size = 3;
+            Pizza pizza = new Pizza();
+            pizza.setPizza(Size, ListofToppings);
 
-         //   Location locationTest = new Location(1);
-
-           // locationTest.removeFromInventory(orderTest);
-
-           // Assert.True(locationTest.Inventory["Dough"] == 6);
+            Assert.True(pizza.GetPizzaCost() == 10m);
 
         }
+
     }
+        
+
+            
+
+         
+    
 }

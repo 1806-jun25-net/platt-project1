@@ -7,13 +7,16 @@ namespace MainLibrary.Models
     {
         public string FirstName { get; set; } = "Bob";
         public string LastName { get; set; } = "Ross";
-        public int DefaultStoreNum { get; set; } = 1;
+       public int DefaultStoreNum { get; set; } = 1;
         public int RecentOrderLocation { get; set; } = 1;
+
+        public int UserID { get; set; }
+
         //public List<Order> UserOrderHistory = new List<Order>(); circular dependency?
 
 
       
-       public DateTime TimeOfOrder { get; set; } = new DateTime();
+       //public DateTime TimeOfOrder { get; set; } = new DateTime();
 
 
 

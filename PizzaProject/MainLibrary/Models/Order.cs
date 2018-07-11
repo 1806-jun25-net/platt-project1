@@ -11,8 +11,10 @@ namespace MainLibrary.Models
         [XmlElement]
         public Location Location { get; set; }
         public User User;
-       
-        public List<Pizza> PizzaList; 
+
+        public int OrderID; 
+
+        public List<Pizza> PizzaList;
         public int pizzaCount; //max 12
         public decimal totalValue; //max 500 dollars
         public DateTime TimeOfOrder { get; set; } = new DateTime();
@@ -20,11 +22,11 @@ namespace MainLibrary.Models
        
         public Order()
         {
-            Pizza Pizza1 = new Pizza();
-            Pizza Pizza2 = new Pizza();
-            Pizza Pizza3 = new Pizza();
+            //Pizza Pizza1 = new Pizza();
+            //Pizza Pizza2 = new Pizza();
+            //Pizza Pizza3 = new Pizza();
 
-            PizzaList = new List<Pizza> { Pizza1, Pizza2, Pizza3};
+            //PizzaList = new List<Pizza> { Pizza1, Pizza2, Pizza3};
 
         }
 
@@ -80,7 +82,10 @@ namespace MainLibrary.Models
             }
 
             else
+            {
+                totalValue = runningTotal;
                 return runningTotal;
+            }
 
         }
 

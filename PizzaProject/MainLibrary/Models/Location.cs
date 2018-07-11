@@ -130,6 +130,14 @@ namespace MainLibrary.Models
 
             }
 
+            if(order.totalValue > 500.00m)   //if it fails price check will return false
+            {
+
+                return false;
+            }
+
+            
+
             return true; // if it makes it here, the order should have the available ingredients
 
             //foreach (Pizza pizza in order.PizzaList)

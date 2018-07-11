@@ -13,6 +13,7 @@ namespace DBContext.Models
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int? DefStore { get; set; }
 
         public ICollection<Order> Order { get; set; }
     }

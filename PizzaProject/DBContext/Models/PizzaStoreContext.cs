@@ -26,8 +26,8 @@ namespace DBContext.Models
             if (!optionsBuilder.IsConfigured)
             {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseSqlServe
-       }
+//                optionsBuilder.UseSqlServer();
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,9 +39,9 @@ namespace DBContext.Models
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.Property(e => e.OrderId)
-                    .HasColumnName("OrderID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                entity.Property(e => e.OrderTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
 
@@ -58,9 +58,7 @@ namespace DBContext.Models
 
             modelBuilder.Entity<Pizza>(entity =>
             {
-                entity.Property(e => e.PizzaId)
-                    .HasColumnName("PizzaID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.PizzaId).HasColumnName("PizzaID");
 
                 entity.Property(e => e.HasPep).HasColumnName("hasPep");
 
@@ -71,9 +69,7 @@ namespace DBContext.Models
             {
                 entity.HasKey(e => e.JunctionId);
 
-                entity.Property(e => e.JunctionId)
-                    .HasColumnName("JunctionID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.JunctionId).HasColumnName("JunctionID");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
@@ -92,9 +88,7 @@ namespace DBContext.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.UserId)
-                    .HasColumnName("UserID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
 
