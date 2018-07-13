@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace DBContext.Models
 {
-    public partial class User
+    public partial class UserDb
     {
-        public User()
+        public UserDb()
         {
-            Order = new HashSet<Order>();
+            OrderDb = new HashSet<OrderDb>();
         }
 
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int? DefStore { get; set; }
+        public string DefaultStore { get; set; }
 
-        public ICollection<Order> Order { get; set; }
+        public ICollection<OrderDb> OrderDb { get; set; }
     }
 }
