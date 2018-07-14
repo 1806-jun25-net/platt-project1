@@ -5,42 +5,37 @@ using System.Threading.Tasks;
 using MainLibrary.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    public class UserController : Controller
+    public class OrderController : Controller
     {
 
         public PizzaStoreRepo Repo { get; }
 
-        public UserController(PizzaStoreRepo repo)
+        public OrderController(PizzaStoreRepo repo)
         {
             Repo = repo;
         }
-
-        // GET: User
+        // GET: Order
         public ActionResult Index()
         {
-            UserWeb user = new UserWeb();
-            //var libUsers = Repo.Get(search);
-            //var webRests = libRests.Select(x => new Restaurant
-            return View(user);
+            return View();
         }
 
-        // GET: User/Details/5
+        // GET: Order/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: User/Create
+        // GET: Order/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: User/Create
+        // POST: Order/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -57,13 +52,13 @@ namespace WebApp.Controllers
             }
         }
 
-        // GET: User/Edit/5
+        // GET: Order/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: User/Edit/5
+        // POST: Order/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -80,54 +75,13 @@ namespace WebApp.Controllers
             }
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(UserWeb User)
-        {
-
-            List < MainLibrary.Models.User > listofusersfromdb= new List<MainLibrary.Models.User>();
-
-            listofusersfromdb = Repo.GetUsers().ToList();
-
-            bool useralreadyexists = false;
-
-            foreach(MainLibrary.Models.User usersthatexist in listofusersfromdb)
-            {
-                if(usersthatexist.FirstName == User.FirstName && usersthatexist.LastName == User.LastName)
-                {
-                    useralreadyexists = true;
-                    break;
-
-                }
-
-            }
-
-            if(useralreadyexists)
-            {
-
-                ModelState.AddModelError("", "User Already Exists! Signing In...");
-
-            }
-            else
-            {
-                Repo.AddUser(Mapper.Map(User));
-                Repo.SaveChanges();
-                return RedirectToAction("Index", ""); 
-            }
-
-
-
-            return View(User);
-
-        }
-
-        // GET: User/Delete/5
+        // GET: Order/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: User/Delete/5
+        // POST: Order/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

@@ -42,7 +42,7 @@ namespace MainLibrary.Repositories
 
         public void AddUser(Models.User user)
         {
-            _db.Add(Mapper.Map(user)); 
+            _db.Add(Mapper.Map(user));
         }
 
         public void SaveChanges()
@@ -50,5 +50,19 @@ namespace MainLibrary.Repositories
             _db.SaveChanges();
         }
 
+        public IEnumerable<Models.Order> GetOrders()
+        {
+
+
+            return Mapper.Map(_db.OrderDb);
+        }
+
+        public IEnumerable<Models.User> GetUsers()
+        {
+
+            return Mapper.Map(_db.UserDb);
+        }
+
+        
     }
 }

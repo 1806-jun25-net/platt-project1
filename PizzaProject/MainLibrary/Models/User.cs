@@ -18,6 +18,7 @@ namespace MainLibrary.Models
         public string FirstName { get; set; } = "Bob";
         public string LastName { get; set; } = "Ross";
         public int UserID { get; set; }
+        public string defStore { get; set; } = "Herndon";
 
     }
 }

@@ -16,7 +16,8 @@ namespace MainLibrary.Models
         {
             FirstName = userdb.FirstName,
             LastName = userdb.LastName,
-            UserID = userdb.UserId
+            UserID = userdb.UserId,
+            defStore = userdb.DefaultStore
         };
 
         //user from class to DB
@@ -24,6 +25,7 @@ namespace MainLibrary.Models
         {
             FirstName = user.FirstName,
             LastName = user.LastName,
+            DefaultStore = user.defStore 
 
 
         };
@@ -99,6 +101,18 @@ namespace MainLibrary.Models
 
 
         };
+
+
+
+        public static IEnumerable<Order> Map(IEnumerable<DBContext.Models.OrderDb> ordersdb) => ordersdb.Select(Map);
+
+        public static IEnumerable<DBContext.Models.OrderDb> Map(IEnumerable<Order> orders) => orders.Select(Map);
+
+        public static IEnumerable<User> Map(IEnumerable<DBContext.Models.UserDb> usersdb) => usersdb.Select(Map);
+
+        //public static IEnumerable<Review> Map(IEnumerable<Context.Models.Review> reviews) => reviews.Select(Map);
+
+        //public static IEnumerable<Context.Models.Review> Map(IEnumerable<Review> reviews) => reviews.Select(Map);
 
     }
 
