@@ -25,7 +25,8 @@ namespace MainLibrary.Models
         {
             FirstName = user.FirstName,
             LastName = user.LastName,
-            DefaultStore = user.defStore 
+            DefaultStore = user.defStore,
+            UserId = user.UserID
 
 
         };
@@ -97,7 +98,8 @@ namespace MainLibrary.Models
         public static DBContext.Models.LocationDb Map(Location location) => new DBContext.Models.LocationDb
         {
             Address = location.StoreName,
-            StoredPizza = location.StoredPizza
+            StoredPizza = location.StoredPizza,
+            LocationId = location.LocID
 
 
         };

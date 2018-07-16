@@ -1,0 +1,117 @@
+﻿@model DBContext.Models.OrderDb
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OrderDb</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza4)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza4)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza5)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza5)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza6)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza6)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza7)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza7)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza8)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza8)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza9)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza9)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza10)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza10)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza11)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza11)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Opizza12)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opizza12)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeofOrder)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeofOrder)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderTotalPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Loc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Loc.LocationId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OrderId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

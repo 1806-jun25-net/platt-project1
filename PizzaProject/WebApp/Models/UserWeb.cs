@@ -26,5 +26,14 @@ namespace WebApp.Models
            new SelectListItem {Value = "Reston", Text = "Reston"},
            
        };
+
+        public void setUser(string first, string last, string store, int User)
+        {
+            FirstName = first;
+            LastName = last;
+            defStore = store;
+            UserID = User;
+
+        }
     }
 }

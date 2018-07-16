@@ -1,0 +1,106 @@
+﻿@model DBContext.Models.OrderDb
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>OrderDb</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocId" class="control-label"></label>
+                <select asp-for="LocId" class ="form-control" asp-items="ViewBag.LocId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza1" class="control-label"></label>
+                <input asp-for="Opizza1" class="form-control" />
+                <span asp-validation-for="Opizza1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza2" class="control-label"></label>
+                <input asp-for="Opizza2" class="form-control" />
+                <span asp-validation-for="Opizza2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza3" class="control-label"></label>
+                <input asp-for="Opizza3" class="form-control" />
+                <span asp-validation-for="Opizza3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza4" class="control-label"></label>
+                <input asp-for="Opizza4" class="form-control" />
+                <span asp-validation-for="Opizza4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza5" class="control-label"></label>
+                <input asp-for="Opizza5" class="form-control" />
+                <span asp-validation-for="Opizza5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza6" class="control-label"></label>
+                <input asp-for="Opizza6" class="form-control" />
+                <span asp-validation-for="Opizza6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza7" class="control-label"></label>
+                <input asp-for="Opizza7" class="form-control" />
+                <span asp-validation-for="Opizza7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza8" class="control-label"></label>
+                <input asp-for="Opizza8" class="form-control" />
+                <span asp-validation-for="Opizza8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza9" class="control-label"></label>
+                <input asp-for="Opizza9" class="form-control" />
+                <span asp-validation-for="Opizza9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza10" class="control-label"></label>
+                <input asp-for="Opizza10" class="form-control" />
+                <span asp-validation-for="Opizza10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza11" class="control-label"></label>
+                <input asp-for="Opizza11" class="form-control" />
+                <span asp-validation-for="Opizza11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Opizza12" class="control-label"></label>
+                <input asp-for="Opizza12" class="form-control" />
+                <span asp-validation-for="Opizza12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeofOrder" class="control-label"></label>
+                <input asp-for="TimeofOrder" class="form-control" />
+                <span asp-validation-for="TimeofOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderTotalPrice" class="control-label"></label>
+                <input asp-for="OrderTotalPrice" class="form-control" />
+                <span asp-validation-for="OrderTotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

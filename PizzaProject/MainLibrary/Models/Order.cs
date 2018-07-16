@@ -11,7 +11,7 @@ namespace MainLibrary.Models
         [XmlElement]
 
         public Location Location { get; set; }
-        public User User;
+        public User User { get; set; }
 
         public int OrderID;
         public decimal OrderPrice;
@@ -33,8 +33,49 @@ namespace MainLibrary.Models
         public string Pizza11 { get; set; }
         public string Pizza12 { get; set; }
 
+
+        public void CalcOrderPrice()
+        {
+            decimal runningTotal = 0m;
+
+            List<String> pizzaList = new List<String>();
+
+            pizzaList.Add(Pizza1);
+            pizzaList.Add(Pizza2);
+            pizzaList.Add(Pizza3);
+            pizzaList.Add(Pizza4);
+            pizzaList.Add(Pizza5);
+            pizzaList.Add(Pizza6);
+            pizzaList.Add(Pizza7);
+            pizzaList.Add(Pizza8);
+            pizzaList.Add(Pizza9);
+            pizzaList.Add(Pizza10);
+            pizzaList.Add(Pizza11);
+            pizzaList.Add(Pizza12);
+
+
+            foreach(string pizza in pizzaList)
+            {
+
+                if (pizza == null)
+                    runningTotal += 0m;
+                else if (pizza == "Small")
+                    runningTotal += 5.00m;
+                else if (pizza == "Medium")
+                    runningTotal += 7.00m;
+                else if (pizza == "Large")
+                    runningTotal += 9.00m;
+                else if (pizza == "Gold") 
+                    runningTotal += 100.00m;
+            }
+
+            OrderPrice = runningTotal;
+
+        }
+
        
-       
+
+        
 
 
     }

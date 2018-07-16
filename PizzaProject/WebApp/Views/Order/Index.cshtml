@@ -1,0 +1,78 @@
+﻿@model WebApp.Models.OrderWeb
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<h4>OrderWeb</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div>
+                @Html.LabelFor(model => model.Pizza1)
+                @Html.DropDownListFor(model => model.Pizza1, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza2)
+                @Html.DropDownListFor(model => model.Pizza2, new SelectList(Model.PizzaEnumerable, "Value", "Text")) <!-- , new { required = (string)null } -->
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza3)
+                @Html.DropDownListFor(model => model.Pizza3, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza4)
+                @Html.DropDownListFor(model => model.Pizza4, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza5)
+                @Html.DropDownListFor(model => model.Pizza5, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza6)
+                @Html.DropDownListFor(model => model.Pizza6, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza7)
+                @Html.DropDownListFor(model => model.Pizza7, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza8)
+                @Html.DropDownListFor(model => model.Pizza8, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza9)
+                @Html.DropDownListFor(model => model.Pizza9, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza10)
+                @Html.DropDownListFor(model => model.Pizza10, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza11)
+                @Html.DropDownListFor(model => model.Pizza11, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Pizza12)
+                @Html.DropDownListFor(model => model.Pizza12, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -84,6 +84,9 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(UserWeb User)
         {
+            
+            
+
 
             List < MainLibrary.Models.User > listofusersfromdb= new List<MainLibrary.Models.User>();
 
@@ -95,6 +98,9 @@ namespace WebApp.Controllers
             {
                 if(usersthatexist.FirstName == User.FirstName && usersthatexist.LastName == User.LastName)
                 {
+
+                    User.UserID = Repo.getUserID(usersthatexist.FirstName, usersthatexist.LastName);
+                    TempData["CurrentUserID"] = User.UserID;
                     useralreadyexists = true;
                     break;
 
@@ -105,13 +111,18 @@ namespace WebApp.Controllers
             if(useralreadyexists)
             {
 
-                ModelState.AddModelError("", "User Already Exists! Signing In...");
+                ModelState.AddModelError("", "User Already Exists! ");
 
             }
             else
             {
                 Repo.AddUser(Mapper.Map(User));
                 Repo.SaveChanges();
+                User.UserID = Repo.getUserID(User.FirstName, User.LastName);
+
+                TempData["CurrentUserID"] = User.UserID;
+
+
                 return RedirectToAction("Index", ""); 
             }
 

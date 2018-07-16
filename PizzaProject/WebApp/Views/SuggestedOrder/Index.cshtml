@@ -1,0 +1,125 @@
+﻿@model IEnumerable<DBContext.Models.OrderDb>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza11)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opizza12)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeofOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Loc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza11)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opizza12)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeofOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Loc.LocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

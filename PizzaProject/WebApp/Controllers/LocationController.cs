@@ -2,17 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MainLibrary.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
     public class LocationController : Controller
     {
-        // GET: Location
+
+        public PizzaStoreRepo Repo { get; }
+
+        public LocationController(PizzaStoreRepo repo)
+        {
+            Repo = repo;
+        }
+
+
         public ActionResult Index()
         {
-            return View();
+            OrderWeb weborder = new OrderWeb();
+            //var libUsers = Repo.Get(search);
+            //var webRests = libRests.Select(x => new Restaurant
+            return View(weborder);
+        }
+
+        // GET: Location
+        public ActionResult Index(LocationWeb locationweb)
+        {
+            int herndoninventoryfromdb = Repo.getHerndonInventory();
+            int restoninventoryfromdb = Repo.getRestonInventory();
+
+            if (herndoninventoryfromdb == 20)
+            {
+                ModelState.AddModelError("", "yay herndonis20!!!");
+            }
+        
+
+            return View(locationweb);
         }
 
         // GET: Location/Details/5
