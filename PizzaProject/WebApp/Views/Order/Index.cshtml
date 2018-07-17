@@ -6,17 +6,17 @@
 
 <h2>Index</h2>
 
-<h4>OrderWeb</h4>
+<h4>Hey don't make more than 1 order to the same location within 2 hours!</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Index">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
             <div>
                 @Html.LabelFor(model => model.Pizza1)
-                @Html.DropDownListFor(model => model.Pizza1, new SelectList(Model.PizzaEnumerable, "Value", "Text"))
+                @Html.DropDownListFor(model => model.Pizza1, new SelectList(Model.PizzaEnumerable, "Value", "Text") )
+               
             </div>
             <div>
                 @Html.LabelFor(model => model.Pizza2)

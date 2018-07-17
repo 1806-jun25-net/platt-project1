@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace WebApp.Models
         public DateTime TimeOfOrder { get; set; } = new DateTime();
 
 
-
+        [Required(AllowEmptyStrings = false)]
         public string Pizza1 { get; set; }
         public string Pizza2 { get; set; }
         public string Pizza3 { get; set; }
