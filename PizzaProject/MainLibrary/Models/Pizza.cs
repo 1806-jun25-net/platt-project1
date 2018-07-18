@@ -59,8 +59,10 @@ namespace MainLibrary.Models
             foreach (Boolean topping in toppingList)
             {
 
-                if(topping)
-                pizzaCost += 0.50m;  //each topping cost an extra 50 cents
+                if (topping)
+                {
+                    pizzaCost += 0.50m;
+                }//each topping cost an extra 50 cents
             }
                 
 
