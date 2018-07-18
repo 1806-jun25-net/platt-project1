@@ -112,9 +112,6 @@ namespace MainLibrary.Models
 
         public static IEnumerable<User> Map(IEnumerable<DBContext.Models.UserDb> usersdb) => usersdb.Select(Map);
 
-        //public static IEnumerable<Review> Map(IEnumerable<Context.Models.Review> reviews) => reviews.Select(Map);
-
-        //public static IEnumerable<Context.Models.Review> Map(IEnumerable<Review> reviews) => reviews.Select(Map);
 
     }
 

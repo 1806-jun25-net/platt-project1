@@ -13,8 +13,8 @@ namespace MainLibrary.Models
         public Location Location { get; set; }
         public User User { get; set; }
 
-        public int OrderID;
-        public decimal OrderPrice;
+        public int OrderID { get; set; }
+        public decimal OrderPrice { get; set; }
 
         public DateTime TimeOfOrder { get; set; } = new DateTime();
 

@@ -19,13 +19,7 @@ namespace DBContext.Models
         public virtual DbSet<OrderDb> OrderDb { get; set; }
         public virtual DbSet<UserDb> UserDb { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-
-            }
-        }
+   
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

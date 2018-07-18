@@ -23,18 +23,7 @@ namespace MainLibrary.Repositories
             _db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        /// <summary>
-        /// get all users from database as a list
-        /// </summary>
-        /// 
-        //public IEnumerable<Models.User> GetUsers()
-        //{
-        //    // disable pointless tracking for performance
-        //    var UserList = Mapper.Map(_db.User);
-        //    //  return Mapper.Map(_db.User).ToList();
-        //    return UserList;
-        //}
-
+       
         public int getHerndonInventory()
         {
             int herndoninvfromdb = (from herndoninv in _db.LocationDb
