@@ -12,4 +12,8 @@
     <ProjectReference Include="..\DBContext\DBContext.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
 </Project>
